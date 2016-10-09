@@ -7,7 +7,8 @@
     "build": "sagui build",
     "develop": "sagui develop --port 3000",
     "dist": "cross-env NODE_ENV=production sagui build --optimize",
-    "start": "npm run develop"
+    "start": "npm run develop",
+    "prepublish": "npm prune && npm run build"
   },
   "keywords": ["react", "proptypes", "patch", "introspection"],
   "author": "Fernando Via Canel <fernando.via@gmail.com>",
