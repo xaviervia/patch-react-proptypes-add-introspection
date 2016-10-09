@@ -7,7 +7,9 @@ This hack (it's a nasty hack) adds metadata to `propTypes` so that information a
 
 ## Install
 
-Not published yet.
+```sh
+npm install --save-dev patch-react-proptypes-add-introspection
+```
 
 ## Usage
 
