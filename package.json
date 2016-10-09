@@ -1,24 +1,22 @@
 {
   "name": "patch-react-proptypes-add-introspection",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.1.0",
+  "description": "Patch React PropTypes to add introspection capabilities and get runtime insights into the propTypes declaration of third party React components",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "npm run test:lint && npm run test:unit",
     "build": "sagui build",
     "develop": "sagui develop --port 3000",
     "dist": "cross-env NODE_ENV=production sagui build --optimize",
-    "start": "npm run develop",
-    "test:coverage": "npm run test:unit -- --coverage",
-    "test:lint": "sagui lint",
-    "test:unit": "cross-env NODE_ENV=test sagui test",
-    "test:unit:watch": "npm run test:unit -- --watch"
+    "start": "npm run develop"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["react", "proptypes", "patch", "introspection"],
+  "author": "Fernando Via Canel <fernando.via@gmail.com>",
+  "license": "MIT",
   "devDependencies": {
     "react": "^15.3.2",
     "sagui": "^6.6.1"
+  },
+  "peerDependencies": {
+    "react": "*"
   }
 }
