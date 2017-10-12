@@ -1,6 +1,6 @@
 {
   "name": "patch-react-proptypes-add-introspection",
-  "version": "0.1.1",
+  "version": "0.1.0",
   "description": "Patch React PropTypes to add introspection capabilities and get runtime insights into the propTypes declaration of third party React components",
   "main": "dist/index.js",
   "scripts": {
@@ -14,7 +14,7 @@
   "author": "Fernando Via Canel <fernando.via@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "react": "^15.3.2 || ^16.0.0",
+    "react": "^16.0.0",
     "sagui": "^6.6.1"
   },
   "peerDependencies": {
