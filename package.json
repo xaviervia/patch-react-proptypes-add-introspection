@@ -1,6 +1,6 @@
 {
   "name": "patch-react-proptypes-add-introspection",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Patch React PropTypes to add introspection capabilities and get runtime insights into the propTypes declaration of third party React components",
   "main": "dist/index.js",
   "scripts": {
