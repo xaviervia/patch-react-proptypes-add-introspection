@@ -10,7 +10,7 @@
     "start": "npm run develop",
     "prepublish": "npm prune && npm run build"
   },
-  "keywords": ["react", "proptypes", "patch", "introspection"],  
+  "keywords": ["react", "proptypes", "patch", "introspection"],
   "author": "Fernando Via Canel <fernando.via@gmail.com>",
   "license": "MIT",
   "devDependencies": {
