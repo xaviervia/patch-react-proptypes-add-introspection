@@ -5,22 +5,32 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "sagui build",
-    "develop": "sagui develop --port 3000",
-    "dist": "cross-env NODE_ENV=production sagui build --optimize",
-    "start": "npm run develop",
-    "prepublish": "npm prune && npm run build"
+    "dist": "sagui dist",
+    "format": "sagui format",
+    "prepublish": "npm run build",
+    "start": "sagui develop --port 3000",
+    "test": "sagui test",
+    "test:lint": "sagui test:lint",
+    "test:typecheck": "sagui test:typecheck",
+    "test:unit": "sagui test:unit --coverage",
+    "test:unit:watch": "sagui test:unit --watch"
   },
-  "keywords": ["react", "proptypes", "patch", "introspection"],
+  "keywords": [
+    "react",
+    "proptypes",
+    "patch",
+    "introspection"
+  ],
   "author": "Fernando Via Canel <fernando.via@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "eslint-config-sagui": "^6.0.0",
+    "prop-types": "^15.6.0",
     "react": "^16.0.0",
-    "sagui": "^6.6.1"
+    "sagui": "^11.1.0"
   },
   "peerDependencies": {
+    "prop-types": "*",
     "react": "*"
-  },
-  "dependencies": {
-    "prop-types": "^15.6.0"
   }
 }

@@ -5,5 +5,5 @@
 module.exports = {
   pages: ['example'],
 
-  libraries: ['index']
+  libraries: ['index'],
 }

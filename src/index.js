@@ -1,80 +1,74 @@
 import PropTypes from 'prop-types'
 
-const toPatch = [
-  'arrayOf',
-  'instanceOf',
-  'objectOf',
-  'oneOf',
-  'oneOfType',
-  'shape'
-]
+const toPatch = ['arrayOf', 'instanceOf', 'objectOf', 'oneOf', 'oneOfType', 'shape']
 
-const wrap = (type, f) => function (...xs) {
-  const result = f(...xs)
-  result.type = type
-  result.args = xs[0]
+const wrap = (type, f) =>
+  function(...xs) {
+    const result = f(...xs)
+    result.type = type
+    result.args = xs[0]
 
-  result.isRequired.type = type
-  result.isRequired.args = xs[0]
-  result.isRequired.required = true
+    result.isRequired.type = type
+    result.isRequired.args = xs[0]
+    result.isRequired.required = true
 
-  return result
-}
+    return result
+  }
 
-toPatch.forEach((method) => {
+toPatch.forEach(method => {
   PropTypes[method] = wrap(method, PropTypes[method])
 })
 
-const introspectValue = (value) => {
+const introspectValue = value => {
   if (value.type) {
     switch (value.type) {
       case 'arrayOf':
         return {
           type: 'arrayOf',
           structure: introspectValue(value.args),
-          isRequired: !!value.required
+          isRequired: !!value.required,
         }
 
       case 'instanceOf':
         return {
           type: 'instanceOf',
           structure: value.args,
-          isRequired: !!value.required
+          isRequired: !!value.required,
         }
 
       case 'objectOf':
         return {
           type: 'objectOf',
           structure: introspectValue(value.args),
-          isRequired: !!value.required
+          isRequired: !!value.required,
         }
 
       case 'oneOf':
         return {
           type: 'oneOf',
           structure: value.args,
-          isRequired: !!value.required
+          isRequired: !!value.required,
         }
 
       case 'oneOfType':
         return {
           type: 'oneOfType',
           structure: value.args.map(introspectValue),
-          isRequired: !!value.required
+          isRequired: !!value.required,
         }
 
       case 'shape':
         return {
           type: 'shape',
           structure: introspect(value.args),
-          isRequired: !!value.required
+          isRequired: !!value.required,
         }
 
       default:
         return {
           type: value.type,
           structure: 'unknown',
-          isRequired: !!value.required
+          isRequired: !!value.required,
         }
     }
   }
@@ -82,125 +76,126 @@ const introspectValue = (value) => {
   switch (value) {
     case PropTypes.any:
       return {
-        type: 'any'
+        type: 'any',
       }
 
     case PropTypes.any.isRequired:
       return {
         type: 'any',
-        isRequired: true
+        isRequired: true,
       }
 
     case PropTypes.bool:
       return {
-        type: 'bool'
+        type: 'bool',
       }
 
     case PropTypes.bool.isRequired:
       return {
         type: 'bool',
-        isRequired: true
+        isRequired: true,
       }
 
     case PropTypes.array:
       return {
-        type: 'array'
+        type: 'array',
       }
 
     case PropTypes.array.isRequired:
       return {
         type: 'array',
-        isRequired: true
+        isRequired: true,
       }
 
     case PropTypes.element:
       return {
-        type: 'element'
+        type: 'element',
       }
 
     case PropTypes.element.isRequired:
       return {
         type: 'element',
-        isRequired: true
+        isRequired: true,
       }
 
     case PropTypes.func:
       return {
-        type: 'func'
+        type: 'func',
       }
 
     case PropTypes.func.isRequired:
       return {
         type: 'func',
-        isRequired: true
+        isRequired: true,
       }
 
     case PropTypes.node:
       return {
-        type: 'node'
+        type: 'node',
       }
 
     case PropTypes.node.isRequired:
       return {
         type: 'node',
-        isRequired: true
+        isRequired: true,
       }
 
     case PropTypes.number:
       return {
-        type: 'number'
+        type: 'number',
       }
 
     case PropTypes.number.isRequired:
       return {
         type: 'number',
-        isRequired: true
+        isRequired: true,
       }
 
     case PropTypes.object:
       return {
-        type: 'object'
+        type: 'object',
       }
 
     case PropTypes.object.isRequired:
       return {
         type: 'object',
-        isRequired: true
+        isRequired: true,
       }
 
     case PropTypes.string:
       return {
-        type: 'string'
+        type: 'string',
       }
 
     case PropTypes.string.isRequired:
       return {
         type: 'string',
-        isRequired: true
+        isRequired: true,
       }
 
     case PropTypes.symbol:
       return {
-        type: 'symbol'
+        type: 'symbol',
       }
 
     case PropTypes.symbol.isRequired:
       return {
         type: 'symbol',
-        isRequired: true
+        isRequired: true,
       }
 
     default:
       return {
-        type: 'unknown'
+        type: 'unknown',
       }
   }
 }
 
-export const introspect = (propTypes) =>
-  Object
-    .keys(propTypes)
-    .reduce((cumulated, key) => ({
+export const introspect = propTypes =>
+  Object.keys(propTypes).reduce(
+    (cumulated, key) => ({
       ...cumulated,
-      [key]: introspectValue(propTypes[key])
-    }), {})
+      [key]: introspectValue(propTypes[key]),
+    }),
+    {}
+  )

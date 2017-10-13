@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export default function ComplicatedComponent () {
-  return <div></div>
+export default function ComplicatedComponent() {
+  return <div />
 }
 
 ComplicatedComponent.propTypes = {
@@ -37,5 +37,5 @@ ComplicatedComponent.propTypes = {
   aString: PropTypes.string,
   aStringAndItsRequired: PropTypes.string.isRequired,
   aSymbol: PropTypes.symbol,
-  aSymbolAndItsRequired: PropTypes.symbol.isRequired
+  aSymbolAndItsRequired: PropTypes.symbol.isRequired,
 }
